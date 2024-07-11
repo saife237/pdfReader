@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>PDF Uploader</title>
+</head>
+<body>
+    <h1>Upload Multiple PDFs</h1>
+    <form method="POST" enctype="multipart/form-data" action="/upload">
+        <input type="file" name="files" multiple />
+        <button type="submit">Upload</button>
+    </form>
+    <div th:if="${pdfTexts != null}">
+        <h2>Extracted Texts:</h2>
+        <div th:each="text : ${pdfTexts}">
+            <pre th:text="${text}"></pre>
+            <hr/>
+        </div>
+    </div>
+</body>
+</html>
